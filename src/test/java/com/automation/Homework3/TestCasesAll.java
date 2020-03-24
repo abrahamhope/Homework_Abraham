@@ -206,6 +206,13 @@ registration!”
         Assert.assertEquals(actualSubject,expectedSubject);
     }
 
+    /*
+    Step 1. Go to “https://practice- cybertekschool.herokuapp.com”
+Step 2. And click on “File Upload".
+Step 3. Upload any file with .txt extension from your computer.
+Step 4. Click “Upload” button.
+Step 5. Verify that subject is: “File Uploaded!” Step 6. Verify that uploaded file name is displayed.
+     */
     @Test
     public void test7(){
         driver.get("https://practice-cybertekschool.herokuapp.com");
@@ -224,6 +231,22 @@ registration!”
 
         Assert.assertTrue(uploadedFileName.isDisplayed());
     }
+
+    /*
+    Step 1. Go to “https://practice- cybertekschool.herokuapp.com”
+Step 2. And click on “Autocomplete”.
+Step 3. Enter “United States of America” into country input box.
+Step 4. Verify that following message is displayed: “You selected: United States of America”
+     */
+    @Test
+    public void test8(){
+        driver.get("https://practice-cybertekschool.herokuapp.com");
+        driver.findElement(By.linkText("Autocomplete")).click();
+        driver.findElement(By.id("myCountry")).sendKeys("United States of America");
+        driver.findElement(By.xpath("//*[@id=\"content\"]/div/form/input")).click();
+        Assert.assertTrue(driver.findElement(By.id("result")).isDisplayed());
+    }
+
     @AfterMethod
     public void teardown(){
         driver.quit();
